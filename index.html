@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DFifty — PRO EDITION</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="header">
+      <div class="brand">DFifty <span class="pro">PRO</span> — GOD MODE</div>
+      <div class="top-actions">
+        <button id="btn-save">Save</button>
+        <button id="btn-load">Load</button>
+        <button id="btn-export">Export</button>
+        <button id="btn-run">Render ▶</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <!-- LEFT SIDEBAR -->
+      <aside class="leftpanel">
+        <div class="panel">
+          <h3>Surfaces</h3>
+          <div id="surface-list" class="surface-list"></div>
+          <div class="row" style="margin-top:8px;">
+            <button id="add-surface" class="primary">Add Surface</button>
+            <button id="duplicate-surface">Duplicate</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Projectors</h3>
+          <div id="projector-list"></div>
+          <div class="row">
+            <button id="add-projector">Add Projector</button>
+          </div>
+        </div>
+
+        <div class="panel small muted">
+          <div>Auto-save: ON</div>
+          <div id="status-line">Ready</div>
+        </div>
+      </aside>
+
+      <!-- CENTER CANVAS -->
+      <main class="mainpanel">
+        <div class="canvas-toolbar">
+          <label class="small">Grid</label>
+          <select id="grid-snap">
+            <option value="0">Off</option>
+            <option value="0.1">0.1</option>
+            <option value="0.25" selected>0.25</option>
+            <option value="0.5">0.5</option>
+          </select>
+
+          <label class="small">Mesh</label>
+          <select id="mesh-detail">
+            <option value="4">4 pts (2 × 2)</option>
+            <option value="8">8 pts (4 × 2)</option>
+            <option value="16">16 pts (4 × 4)</option>
+            <option value="32">32 pts (8 × 4)</option>
+          </select>
+
+          <div style="flex:1"></div>
+          <div class="logo">Made for Pro</div>
+        </div>
+
+        <div class="canvas-container">
+          <canvas id="mapperCanvas" width="1600" height="900"></canvas>
+          <div id="overlay" class="overlay"></div>
+        </div>
+      </main>
+
+      <!-- RIGHT SIDEBAR -->
+      <aside class="rightpanel">
+        <div class="panel">
+          <h3>Inspector</h3>
+          <div id="inspector"></div>
+        </div>
+
+        <div class="panel">
+          <h3>Laser Preview</h3>
+          <canvas id="laserPreview" width="320" height="180" style="width:100%;border-radius:6px"></canvas>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="footer">DFifty PRO — High Performance Projection Mapping</footer>
+  </div>
+
+  <!-- ROOT-LEVEL SCRIPT STACK (ORDER MATTERS) -->
+  <script src="./dfiftyCoreShim.js"></script>
+  <script src="./wrapPoints.js"></script>
+  <script src="./mappingEngine.js"></script>
+  <script src="./lockGrid.js"></script>
+  <script src="./renderer2d.js"></script>
+  <script src="./gpuWarp.js"></script>
+  <script src="./projectorManager.js"></script>
+  <script src="./laserOutput.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
